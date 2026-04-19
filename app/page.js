@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import MosaicSlider from './components/MosaicSlider';
 
 export default function Home() {
   const heroRef = useRef(null);
@@ -26,43 +27,25 @@ export default function Home() {
       return;
     }
 
-    const markInView = () => {
-      const vh = window.innerHeight;
-      const vw = window.innerWidth;
-      els.forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw) {
-          el.classList.add('visible');
-        }
-      });
-    };
-
-    let observer = null;
-    if (typeof IntersectionObserver !== 'undefined') {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) e.target.classList.add('visible');
-          });
-        },
-        { threshold: 0.05, rootMargin: '0px 0px 15% 0px' }
-      );
-      els.forEach((el) => observer.observe(el));
-    } else {
+    if (typeof IntersectionObserver === 'undefined') {
       els.forEach((el) => el.classList.add('visible'));
+      return;
     }
 
-    markInView();
-    requestAnimationFrame(() => {
-      markInView();
-      requestAnimationFrame(markInView);
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: '0px 0px 15% 0px' }
+    );
+    els.forEach((el) => observer.observe(el));
 
-    window.addEventListener('resize', markInView);
-    return () => {
-      observer?.disconnect();
-      window.removeEventListener('resize', markInView);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -70,7 +53,72 @@ export default function Home() {
 
       {/* ── Hidden top (scroll up to find) ── */}
       <div className="hidden-top">
-        <span className="hidden-top__word">Olá</span>
+        <div className="hidden-top__grid">
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Construção de identidades visuais que traduzem posicionamento, cultura e valores em sistemas consistentes — do naming à arquitetura de marca.
+            </p>
+            <p className="hidden-top__label">Branding ―</p>
+            <p className="hidden-top__caption">Identity, Visual Systems</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Design de interfaces e fluxos centrados no comportamento humano, simplificando operações complexas em experiências intuitivas e escaláveis.
+            </p>
+            <p className="hidden-top__label">Product ―</p>
+            <p className="hidden-top__caption">Interfaces, Flows, Prototyping</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Criação e manutenção de bibliotecas de componentes, tokens e documentação que garantem coerência visual e velocidade de entrega em escala.
+            </p>
+            <p className="hidden-top__label">Design System ―</p>
+            <p className="hidden-top__caption">Tokens, Components, Documentation</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Animações e motion graphics que reforçam a narrativa do produto, guiam o olhar e adicionam camadas de significado à interação.
+            </p>
+            <p className="hidden-top__label">Motion ―</p>
+            <p className="hidden-top__caption">Animation, Video, Micro-interactions</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Direção criativa de projetos editoriais, campanhas e experiências visuais — da concepção à execução fotográfica e de linguagem.
+            </p>
+            <p className="hidden-top__label">Art Direction ―</p>
+            <p className="hidden-top__caption">Editorial, Photography, Campaign</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Mapeamento de jornadas, pesquisa com usuários e definição de estratégias que conectam necessidades reais a soluções de design significativas.
+            </p>
+            <p className="hidden-top__label">Strategy ―</p>
+            <p className="hidden-top__caption">Research, Journey, Experience</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Seleção e composição tipográfica que estabelecem hierarquia, ritmo e personalidade — reforçando a voz da marca em cada superfície.
+            </p>
+            <p className="hidden-top__label">Typography ―</p>
+            <p className="hidden-top__caption">Type Pairing, Hierarchy, Voice</p>
+          </div>
+          <div className="hidden-top__block">
+            <span className="hidden-top__marker" aria-hidden="true" />
+            <p className="hidden-top__body">
+              Narrativas visuais e textuais que conectam marca e público, transformando valores culturais em conteúdo relevante e autêntico.
+            </p>
+            <p className="hidden-top__label">Culture ―</p>
+            <p className="hidden-top__caption">Storytelling, Content, Narrative</p>
+          </div>
+        </div>
       </div>
 
       {/* ── Hero (yellow, contact links na coluna 2 da grelha) ── */}
@@ -142,15 +190,16 @@ export default function Home() {
                 </span>
               </p>
             </div>
-            <div className="opening__bridge page-columns__col--bleed-right">
-              <div className="opening__bridge-video">
-                <iframe
-                  src="https://player.vimeo.com/video/824804225?h=0&title=0&byline=0&portrait=0&badge=0&autopause=0&background=1&muted=1"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                  title="444,444…"
-                />
-              </div>
+          </div>
+          <div className="opening__bridge">
+            <div className="opening__bridge-video">
+              <iframe
+                src="https://player.vimeo.com/video/520934343?h=0&title=0&byline=0&portrait=0&badge=0&autopause=0&controls=0&autoplay=1&muted=1&loop=1"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                title="ramonanjos.com"
+              />
             </div>
           </div>
           <div className="opening__post-video-row">
@@ -167,23 +216,55 @@ export default function Home() {
       </div>
 
       {/* ══════════════════════════════════════
+          Bio: rail + duas colunas de texto
+          ══════════════════════════════════════ */}
+      <section className="bio-rail reveal" aria-label="Sobre o trabalho">
+        <div className="bio-rail__grid">
+          <p className="opening__author bio-rail__label">
+            Product, Design
+            <small className="opening__author-role">Language System</small>
+          </p>
+          <div className="bio-rail__text">
+            <span className="opening__intro-marker" aria-hidden="true" />
+            <p>Atualmente trabalho como Designer de Produto na{' '}
+            <span className="bio-rail__underline">Fintech Nubank</span>, com o desafio de criar{' '}
+            <strong>
+              a melhor experiência em transações financeiras para +5MM de empreendedores, elevando a
+              capacidade de previsão e gerenciamento de seus negócios.
+            </strong>{' '}
+            Atuamos impactando o comportamento das cidades, como parte de um novo mundo, onde o
+            dinheiro físico deixa de correr e transações financeiras são mínimos detalhes no dia a
+            dia.</p>
+          </div>
+          <div className="bio-rail__text">
+            <span className="opening__intro-marker" aria-hidden="true" />
+            <p>Centrado em como a complexidade da tecnologia simplifica a vida das pessoas, atuo na
+            construção de <strong>produtos nativamente digitais</strong> com fortes pilares de
+            cultura e <strong>experiência de marca</strong>. Trabalhei com Startups e{' '}
+            <strong>equipes premiadas</strong> em diferentes cidades, estúdios como Oz Strategy +
+            Design, Kultur Studio e FutureBrand. Entre os clientes estão Nike, Ambev, Oi, Pinheiro
+            Neto, TOTVS, Stock Car, B2W, Gol e Nestlé.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
           Mosaic Row 1: 2 large items
           ══════════════════════════════════════ */}
       <div className="mosaic mosaic--2-top reveal">
         <div className="mosaic__item mosaic__item--landscape">
-          <div className="mosaic__video">
-            <iframe
-              src="https://player.vimeo.com/video/824804225?h=0&title=0&byline=0&portrait=0&badge=0&autopause=0&background=1&muted=1"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title="Projeto 01"
-            />
-          </div>
-          <div className="mosaic__overlay">Projeto 01</div>
+          <MosaicSlider
+            images={['/imgs/AMZ/AMZ01.jpg', '/imgs/AMZ/AMZ02.jpg', '/imgs/AMZ/AMZ03.jpg', '/imgs/AMZ/AMZ05.jpg']}
+            alt="AMZ"
+          />
+          <div className="mosaic__overlay">AMZ</div>
         </div>
         <div className="mosaic__item mosaic__item--landscape">
-          <img src="https://picsum.photos/800/450?random=11" alt="Projeto 02" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 02</div>
+          <MosaicSlider
+            images={['/imgs/AW/AW01.jpg', '/imgs/AW/AW03.jpg', '/imgs/AW/AW04.jpg', '/imgs/AW/AW07.jpg']}
+            alt="AW"
+          />
+          <div className="mosaic__overlay">AW</div>
         </div>
       </div>
 
@@ -192,20 +273,32 @@ export default function Home() {
           ══════════════════════════════════════ */}
       <div className="mosaic mosaic--4-bottom reveal">
         <div className="mosaic__item mosaic__item--square">
-          <img src="https://picsum.photos/600/600?random=21" alt="Projeto 03" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 03</div>
+          <MosaicSlider
+            images={['/imgs/CG/CG01.jpg', '/imgs/CG/CG02.jpg']}
+            alt="CG"
+          />
+          <div className="mosaic__overlay">CG</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
-          <img src="https://picsum.photos/600/600?random=22" alt="Projeto 04" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 04</div>
+          <MosaicSlider
+            images={['/imgs/FR/FR01.jpg', '/imgs/FR/FR03.jpg', '/imgs/FR/FR07.jpg']}
+            alt="FR"
+          />
+          <div className="mosaic__overlay">FR</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
-          <img src="https://picsum.photos/600/600?random=23" alt="Projeto 05" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 05</div>
+          <MosaicSlider
+            images={['/imgs/HR/HR07.jpg', '/imgs/HR/HR10.jpg']}
+            alt="HR"
+          />
+          <div className="mosaic__overlay">HR</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
-          <img src="https://picsum.photos/600/600?random=24" alt="Projeto 06" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 06</div>
+          <MosaicSlider
+            images={['/imgs/NW/NW03.jpg', '/imgs/NW/NW05.jpg']}
+            alt="NW"
+          />
+          <div className="mosaic__overlay">NW</div>
         </div>
       </div>
 
@@ -214,56 +307,61 @@ export default function Home() {
           ══════════════════════════════════════ */}
       <div className="mosaic mosaic--3-col reveal">
         <div className="mosaic__item mosaic__item--tall">
-          <img src="https://picsum.photos/500/667?random=31" alt="Projeto 07" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 07</div>
+          <MosaicSlider
+            images={['/imgs/OI/OI01.jpg', '/imgs/OI/OI02.jpg', '/imgs/OI/OI03.jpg', '/imgs/OI/OI06.jpg', '/imgs/OI/OI08.jpg']}
+            alt="OI"
+          />
+          <div className="mosaic__overlay">OI</div>
         </div>
         <div className="mosaic__item mosaic__item--tall">
-          <div className="mosaic__video">
-            <iframe
-              src="https://player.vimeo.com/video/824804225?h=0&title=0&byline=0&portrait=0&badge=0&autopause=0&background=1&muted=1"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title="Projeto 08"
-            />
-          </div>
-          <div className="mosaic__overlay">Projeto 08 &mdash; Vídeo</div>
+          <MosaicSlider
+            images={['/imgs/OZ/OZ01.jpg', '/imgs/OZ/OZ02.jpg', '/imgs/OZ/OZ03.jpg']}
+            alt="OZ"
+          />
+          <div className="mosaic__overlay">OZ</div>
         </div>
         <div className="mosaic__item mosaic__item--tall">
-          <img src="https://picsum.photos/500/667?random=33" alt="Projeto 09" loading="lazy" />
-          <div className="mosaic__overlay">Projeto 09</div>
+          <MosaicSlider
+            images={['/imgs/RC/RC01.jpg', '/imgs/RC/RCE05.jpg']}
+            alt="RC"
+          />
+          <div className="mosaic__overlay">RC</div>
         </div>
       </div>
 
       {/* ══════════════════════════════════════
-          Bio: rail + duas colunas de texto (ref. layout 3 colunas)
+          Mosaic Row 4: 4 equal items
           ══════════════════════════════════════ */}
-      <section className="bio-rail reveal" aria-label="Sobre o trabalho">
-        <div className="bio-rail__grid">
-          <p className="opening__author bio-rail__label">
-            Product, Design
-            <small className="opening__author-role">Language System</small>
-          </p>
-          <p className="bio-rail__text">
-            Atualmente trabalho como Designer de Produto na{' '}
-            <span className="bio-rail__underline">Fintech Nubank</span>, com o desafio de criar{' '}
-            <strong>
-              a melhor experiência em transações financeiras para +5MM de empreendedores, elevando a
-              capacidade de previsão e gerenciamento de seus negócios.
-            </strong>{' '}
-            Atuamos impactando o comportamento das cidades, como parte de um novo mundo, onde o
-            dinheiro físico deixa de correr e transações financeiras são mínimos detalhes no dia a
-            dia.
-          </p>
-          <p className="bio-rail__text">
-            Centrado em como a complexidade da tecnologia simplifica a vida das pessoas, atuo na
-            construção de <strong>produtos nativamente digitais</strong> com fortes pilares de
-            cultura e <strong>experiência de marca</strong>. Trabalhei com Startups e{' '}
-            <strong>equipes premiadas</strong> em diferentes cidades, estúdios como Oz Strategy +
-            Design, Kultur Studio e FutureBrand. Entre os clientes estão Nike, Ambev, Oi, Pinheiro
-            Neto, TOTVS, Stock Car, B2W, Gol e Nestlé.
-          </p>
+      <div className="mosaic mosaic--4-bottom reveal">
+        <div className="mosaic__item mosaic__item--square">
+          <MosaicSlider
+            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg']}
+            alt="SC"
+          />
+          <div className="mosaic__overlay">SC</div>
         </div>
-      </section>
+        <div className="mosaic__item mosaic__item--square">
+          <MosaicSlider
+            images={['/imgs/SK/SK01.jpg', '/imgs/SK/SK02.jpg', '/imgs/SK/SK03.jpg']}
+            alt="SK"
+          />
+          <div className="mosaic__overlay">SK</div>
+        </div>
+        <div className="mosaic__item mosaic__item--square">
+          <MosaicSlider
+            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
+            alt="SM"
+          />
+          <div className="mosaic__overlay">SM</div>
+        </div>
+        <div className="mosaic__item mosaic__item--square">
+          <MosaicSlider
+            images={['/imgs/TR/TR05.jpg', '/imgs/TR/TRI02.jpg']}
+            alt="TR"
+          />
+          <div className="mosaic__overlay">TR</div>
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════
           Citação (mesmo padrão tipográfico / grelha que “Transacionar…”)
