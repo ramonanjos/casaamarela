@@ -1,13 +1,12 @@
 # casa amarela — portfólio
 
-[![Deploy Status](https://img.shields.io/github/deployments/ramonanjos/casaamarela/production?label=vercel&logo=vercel&logoColor=white)](https://casaamarela-inky.vercel.app)
+[![Deploy Status](https://img.shields.io/github/deployments/ramonanjos/casaamarela/production?label=vercel&logo=vercel&logoColor=white)](https://www.ramonanjos.com)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)](https://react.dev)
 
 Site de portfólio de **Ramon Anjos** — Product / Design. Construído em **Next.js 15 (App Router)** + **React 19**, hospedado na **Vercel** com deploys automáticos por Git.
 
-- **Produção:** [www.ramonanjos.com](https://www.ramonanjos.com) *(após propagação do DNS)*
-- **URL Vercel:** [casaamarela-inky.vercel.app](https://casaamarela-inky.vercel.app)
+- **Produção:** [www.ramonanjos.com](https://www.ramonanjos.com)
 - **Repositório:** [github.com/ramonanjos/casaamarela](https://github.com/ramonanjos/casaamarela)
 
 ---

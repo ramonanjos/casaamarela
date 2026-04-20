@@ -406,7 +406,7 @@ a {
   display: block;
 }
 
-/* html-page <h1>: font-size 8rem; line-height 0.9 (Arizona no Cargo ≈ Arizona Text local) */
+/* Heading tipográfico principal — Arizona Text */
 .opening__heading {
   font-family: 'Arizona Text', Georgia, serif;
   font-size: clamp(2.75rem, 5vw + 2.5rem, 8rem);

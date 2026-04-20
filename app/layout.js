@@ -8,7 +8,7 @@ const karla = Karla({
   variable: '--font-karla',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://casaamarela-inky.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ramonanjos.com';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
