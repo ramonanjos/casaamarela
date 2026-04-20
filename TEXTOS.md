@@ -20,7 +20,7 @@ Edite os textos abaixo. Quando terminar, me peça para aplicar as alterações.
 ### 1.2 Fintech Scale
 
 - **Label:** Fintech Scale ―
-- **Texto:** De transações Pix para +500k sellers à gestão financeira de +4MM de empresas — cinco squads em quatro anos no Nubank, convertendo complexidade regulatória e mercado de capitais em experiências que retêm custódia e democratizam acesso.
+- **Texto:** De transações Pix para +500k sellers à gestão financeira de +130MM de pessoas — cinco squads em quatro anos no Nubank, convertendo complexidade regulatória e mercado de capitais em experiências que retêm custódia e democratizam acesso.
 - **Caption:** Trust, Regulation, Capital Markets
 
 ### 1.3 Território
@@ -32,7 +32,7 @@ Edite os textos abaixo. Quando terminar, me peça para aplicar as alterações.
 ### 1.4 Craft Heritage
 
 - **Label:** Craft Heritage ―
-- **Texto:** Vinte anos entre Salvador, São Paulo e Londres — da formação do primeiro time digital na Oz Design aos projetos de identidade na FutureBrand para Bradesco, Nestlé e Oi. Shortlist em Cannes, iF Award e Bienais ADG com o mesmo time.
+- **Texto:** +15 anos entre Salvador, São Paulo e Londres — da formação do primeiro time digital na Oz Design aos projetos de identidade na FutureBrand para Bradesco, Nestlé e Oi. Shortlist em Cannes, iF Award e Bienais ADG com o mesmo time.
 - **Caption:** Cannes, ADG, iF Awards
 
 ### 1.5 Representatividade

@@ -118,7 +118,7 @@ export default function Home() {
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              De transações Pix para +500k sellers à gestão financeira de +4MM de empresas — cinco squads em quatro anos no Nubank, convertendo complexidade regulatória e mercado de capitais em experiências que retêm custódia e democratizam acesso.
+              De transações Pix para +500k sellers à gestão financeira de +130MM de pessoas — cinco squads em quatro anos no Nubank, convertendo complexidade regulatória e mercado de capitais em experiências que retêm custódia e democratizam acesso.
             </p>
             <p className="hidden-top__label">Fintech Scale ―</p>
             <p className="hidden-top__caption">Trust, Regulation, Capital Markets</p>
@@ -134,7 +134,7 @@ export default function Home() {
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Vinte anos entre Salvador, São Paulo e Londres — da formação do primeiro time digital na Oz Design aos projetos de identidade na FutureBrand para Bradesco, Nestlé e Oi. Shortlist em Cannes, iF Award e Bienais ADG com o mesmo time.
+              +15 anos entre Salvador, São Paulo e Londres — da formação do primeiro time digital na Oz Design aos projetos de identidade na FutureBrand para Bradesco, Nestlé e Oi. Shortlist em Cannes, iF Award e Bienais ADG com o mesmo time.
             </p>
             <p className="hidden-top__label">Craft Heritage ―</p>
             <p className="hidden-top__caption">Cannes, ADG, iF Awards</p>
@@ -341,17 +341,17 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/HR/HR07.jpg', '/imgs/HR/HR10.jpg']}
-            alt="HR"
+            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
+            alt="SM"
           />
-          <div className="mosaic__overlay">HR</div>
+          <div className="mosaic__overlay">SM</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/NW/NW03.jpg', '/imgs/NW/NW05.jpg']}
-            alt="NW"
+            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg']}
+            alt="SC"
           />
-          <div className="mosaic__overlay">NW</div>
+          <div className="mosaic__overlay">SC</div>
         </div>
       </div>
 
@@ -375,10 +375,10 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--tall">
           <MosaicSlider
-            images={['/imgs/RC/RC01.jpg', '/imgs/RC/RCE05.jpg']}
-            alt="RC"
+            images={['/imgs/SK/SK01.jpg', '/imgs/SK/SK02.jpg', '/imgs/SK/SK03.jpg']}
+            alt="SK"
           />
-          <div className="mosaic__overlay">RC</div>
+          <div className="mosaic__overlay">SK</div>
         </div>
       </div>
 
@@ -388,24 +388,24 @@ export default function Home() {
       <div className="mosaic mosaic--4-bottom reveal">
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg']}
-            alt="SC"
+            images={['/imgs/NW/NW03.jpg', '/imgs/NW/NW05.jpg']}
+            alt="NW"
           />
-          <div className="mosaic__overlay">SC</div>
+          <div className="mosaic__overlay">NW</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SK/SK01.jpg', '/imgs/SK/SK02.jpg', '/imgs/SK/SK03.jpg']}
-            alt="SK"
+            images={['/imgs/HR/HR07.jpg', '/imgs/HR/HR10.jpg']}
+            alt="HR"
           />
-          <div className="mosaic__overlay">SK</div>
+          <div className="mosaic__overlay">HR</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
-            alt="SM"
+            images={['/imgs/RC/RC01.jpg', '/imgs/RC/RCE05.jpg']}
+            alt="RC"
           />
-          <div className="mosaic__overlay">SM</div>
+          <div className="mosaic__overlay">RC</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
