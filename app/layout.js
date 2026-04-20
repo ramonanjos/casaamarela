@@ -8,8 +8,13 @@ const karla = Karla({
   variable: '--font-karla',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  || (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`)
+  || (process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`)
+  || 'https://casaamarela-inky.vercel.app';
+
 export const metadata = {
-  metadataBase: new URL('https://www.ramonanjos.com'),
+  metadataBase: new URL(siteUrl),
   title: 'ramonanjos',
   description:
     'Ramon Anjos — Product and Design Language System. 15+ years of experience on UX and craft.',
@@ -27,7 +32,7 @@ export const metadata = {
     title: 'ramonanjos',
     description:
       'Ramon Anjos — Product and Design Language System. 15+ years of experience on UX and craft.',
-    url: 'https://www.ramonanjos.com',
+    url: siteUrl,
     siteName: 'Ramon Anjos',
     images: [
       {
