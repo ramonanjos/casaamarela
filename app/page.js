@@ -341,17 +341,17 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
-            alt="SM"
+            images={['/imgs/HR/HR07.jpg', '/imgs/HR/HR10.jpg']}
+            alt="HR"
           />
-          <div className="mosaic__overlay">SM</div>
+          <div className="mosaic__overlay">HR</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg']}
-            alt="SC"
+            images={['/imgs/NW/NW03.jpg', '/imgs/NW/NW05.jpg']}
+            alt="NW"
           />
-          <div className="mosaic__overlay">SC</div>
+          <div className="mosaic__overlay">NW</div>
         </div>
       </div>
 
@@ -375,10 +375,10 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--tall">
           <MosaicSlider
-            images={['/imgs/SK/SK01.jpg', '/imgs/SK/SK02.jpg', '/imgs/SK/SK03.jpg']}
-            alt="SK"
+            images={['/imgs/RC/RC01.jpg', '/imgs/RC/RCE05.jpg']}
+            alt="RC"
           />
-          <div className="mosaic__overlay">SK</div>
+          <div className="mosaic__overlay">RC</div>
         </div>
       </div>
 
@@ -388,24 +388,24 @@ export default function Home() {
       <div className="mosaic mosaic--4-bottom reveal">
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/NW/NW03.jpg', '/imgs/NW/NW05.jpg']}
-            alt="NW"
+            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg']}
+            alt="SC"
           />
-          <div className="mosaic__overlay">NW</div>
+          <div className="mosaic__overlay">SC</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/HR/HR07.jpg', '/imgs/HR/HR10.jpg']}
-            alt="HR"
+            images={['/imgs/SK/SK01.jpg', '/imgs/SK/SK02.jpg', '/imgs/SK/SK03.jpg']}
+            alt="SK"
           />
-          <div className="mosaic__overlay">HR</div>
+          <div className="mosaic__overlay">SK</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/RC/RC01.jpg', '/imgs/RC/RCE05.jpg']}
-            alt="RC"
+            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
+            alt="SM"
           />
-          <div className="mosaic__overlay">RC</div>
+          <div className="mosaic__overlay">SM</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
