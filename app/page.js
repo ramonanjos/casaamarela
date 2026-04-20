@@ -508,7 +508,7 @@ export default function Home() {
           <nav className="awards-press__press" aria-label="Artigos e imprensa">
             <a
               className="awards-press__link"
-              href="https://drive.google.com/file/d/0B5bIZEZdHUmCUkFRNWJ3NFhjajQ/preview"
+              href="https://drive.google.com/file/d/0B5bIZEZdHUmCUkFRNWJ3NFhjajQ/view?usp=sharing&resourcekey=0-c5yhduRGR5CUFZxKDzNe2g"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -516,18 +516,23 @@ export default function Home() {
             </a>
             <a
               className="awards-press__link"
-              href="https://drive.google.com/file/d/0B5bIZEZdHUmCZG9nZzk0NWFpSFE/preview"
+              href="https://drive.google.com/file/d/0B5bIZEZdHUmCZG9nZzk0NWFpSFE/view?usp=sharing&resourcekey=0-YwKKDXvIhNydv49790L_pw"
               target="_blank"
               rel="noopener noreferrer"
             >
               Mediações e trânsito de informações ↗
             </a>
-            <a className="awards-press__link" href="#">
+            <a
+              className="awards-press__link"
+              href="https://drive.google.com/file/d/17Dkigl0ECz_OqUi4ZgZkr4Mh5UFCmdBj/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Compartilhamento e janelas ↗
             </a>
             <a
               className="awards-press__link"
-              href="https://drive.google.com/file/d/0B5bIZEZdHUmCSWpFWGVOdHFzUk0/preview"
+              href="https://drive.google.com/file/d/0B5bIZEZdHUmCSWpFWGVOdHFzUk0/view?usp=sharing&resourcekey=0-jZvQBqtk271uytlRJTZN0g"
               target="_blank"
               rel="noopener noreferrer"
             >
