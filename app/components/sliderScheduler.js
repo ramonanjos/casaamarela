@@ -7,11 +7,9 @@ const subscribers = new Set();
 let lastPicked = new Set();
 let running = false;
 let timer = null;
-let reducedMotion = false;
-
-if (typeof window !== 'undefined') {
-  reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
-}
+let reducedMotion =
+  typeof window !== 'undefined' &&
+  (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false);
 
 function randomGap() {
   return MIN_GAP + Math.random() * (MAX_GAP - MIN_GAP);

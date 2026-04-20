@@ -4,23 +4,72 @@ import { useEffect, useRef } from 'react';
 import MosaicSlider from './components/MosaicSlider';
 
 export default function Home() {
+  const hiddenTopRef = useRef(null);
   const heroRef = useRef(null);
+  const hiddenGridRef = useRef(null);
 
   useEffect(() => {
-    try {
-      heroRef.current?.scrollIntoView({ block: 'start', behavior: 'auto' });
-    } catch {
-      /* alguns browsers / iframes bloqueiam scrollIntoView */
+    const hiddenTop = hiddenTopRef.current;
+    const hero = heroRef.current;
+    const grid = hiddenGridRef.current;
+    if (!hiddenTop || !hero) return;
+
+    hiddenTop.classList.add('hidden-top--open');
+    void hiddenTop.offsetHeight;
+    window.scrollTo(0, hero.offsetTop);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, hero.offsetTop);
+      requestAnimationFrame(() => {
+        document.body.classList.add('page-ready');
+      });
+    });
+
+    if (!grid) return;
+
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    if (isTouch || reduced) return;
+
+    let heroTop = hero.offsetTop;
+    let maxShift = Math.max(0, grid.parentElement.clientHeight - grid.offsetHeight - 120);
+
+    function measure() {
+      heroTop = hero.offsetTop;
+      maxShift = Math.max(0, grid.parentElement.clientHeight - grid.offsetHeight - 120);
     }
+
+    let ticking = false;
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        if (scrollY < heroTop) {
+          const ratio = Math.min((heroTop - scrollY) / heroTop, 1);
+          grid.style.transform = `translateY(-${ratio * maxShift}px)`;
+        } else {
+          grid.style.transform = 'translateY(0)';
+        }
+        ticking = false;
+      });
+    }
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', measure, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', measure);
+      grid.style.transform = '';
+    };
   }, []);
 
   useEffect(() => {
     const els = document.querySelectorAll('.reveal');
     if (els.length === 0) return;
 
-    const reduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
 
     if (reduced) {
       els.forEach((el) => el.classList.add('visible'));
@@ -52,71 +101,71 @@ export default function Home() {
     <main className="page">
 
       {/* ── Hidden top (scroll up to find) ── */}
-      <div className="hidden-top">
-        <div className="hidden-top__grid">
+      <div className="hidden-top" ref={hiddenTopRef}>
+        <div className="hidden-top__grid" ref={hiddenGridRef}>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Construção de identidades visuais que traduzem posicionamento, cultura e valores em sistemas consistentes — do naming à arquitetura de marca.
+              Pós-graduação em Tecnologia e Estética pela PUC-SP e grupo de pesquisa em Filosofia e Design na USP — uma base teórica que traduz leitura de signos, cultura de massa e comportamento em decisões de produto com rigor e profundidade.
             </p>
-            <p className="hidden-top__label">Branding ―</p>
-            <p className="hidden-top__caption">Identity, Visual Systems</p>
+            <p className="hidden-top__label">Semiótica ―</p>
+            <p className="hidden-top__caption">Signs, Meaning, Behavior</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Design de interfaces e fluxos centrados no comportamento humano, simplificando operações complexas em experiências intuitivas e escaláveis.
+              De transações Pix para +500k sellers à gestão financeira de +4MM de empresas — cinco squads em quatro anos no Nubank, convertendo complexidade regulatória e mercado de capitais em experiências que retêm custódia e democratizam acesso.
             </p>
-            <p className="hidden-top__label">Product ―</p>
-            <p className="hidden-top__caption">Interfaces, Flows, Prototyping</p>
+            <p className="hidden-top__label">Fintech Scale ―</p>
+            <p className="hidden-top__caption">Trust, Regulation, Capital Markets</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Criação e manutenção de bibliotecas de componentes, tokens e documentação que garantem coerência visual e velocidade de entrega em escala.
+              Três publicações acadêmicas sobre digitalização do território urbano e design como mediador entre pessoas e seu entorno — da pesquisa em mobilidade e portabilidade em São Paulo a produtos que reduziram evasão escolar na rede pública de Salvador.
             </p>
-            <p className="hidden-top__label">Design System ―</p>
-            <p className="hidden-top__caption">Tokens, Components, Documentation</p>
+            <p className="hidden-top__label">Território ―</p>
+            <p className="hidden-top__caption">Urban, Research, Public Impact</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Animações e motion graphics que reforçam a narrativa do produto, guiam o olhar e adicionam camadas de significado à interação.
+              Vinte anos entre Salvador, São Paulo e Londres — da formação do primeiro time digital na Oz Design aos projetos de identidade na FutureBrand para Bradesco, Nestlé e Oi. Shortlist em Cannes, iF Award e Bienais ADG com o mesmo time.
             </p>
-            <p className="hidden-top__label">Motion ―</p>
-            <p className="hidden-top__caption">Animation, Video, Micro-interactions</p>
+            <p className="hidden-top__label">Craft Heritage ―</p>
+            <p className="hidden-top__caption">Cannes, ADG, iF Awards</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Direção criativa de projetos editoriais, campanhas e experiências visuais — da concepção à execução fotográfica e de linguagem.
+              Membro da PretUX há cinco anos, potencializando inserção e liderança de pessoas pretas em UX. Documentários em periferias, curadoria no Brazilians Who Design e causas ativas em direitos civis e empoderamento econômico.
             </p>
-            <p className="hidden-top__label">Art Direction ―</p>
-            <p className="hidden-top__caption">Editorial, Photography, Campaign</p>
+            <p className="hidden-top__label">Representatividade ―</p>
+            <p className="hidden-top__caption">pretUX, Equity, Leadership</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Mapeamento de jornadas, pesquisa com usuários e definição de estratégias que conectam necessidades reais a soluções de design significativas.
+              Co-fundei um restaurante em São Paulo combinando Service Design e Branding, escalei uma EdTech até a seed YC21 liderando marca e tom de voz, e produzi festivais de teatro latino-americano e culinária itinerante na Bahia.
             </p>
-            <p className="hidden-top__label">Strategy ―</p>
-            <p className="hidden-top__caption">Research, Journey, Experience</p>
+            <p className="hidden-top__label">Empreender ―</p>
+            <p className="hidden-top__caption">Startups, Service Design, Venture</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Seleção e composição tipográfica que estabelecem hierarquia, ritmo e personalidade — reforçando a voz da marca em cada superfície.
+              Dez projetos entre documentários, filmes e publicações — de Naturalmente Capoeira a festivais de teatro na Bahia. Câmera como ferramenta de pesquisa, investigando estéticas do cotidiano e representatividade em produções de baixo custo.
             </p>
-            <p className="hidden-top__label">Typography ―</p>
-            <p className="hidden-top__caption">Type Pairing, Hierarchy, Voice</p>
+            <p className="hidden-top__label">Audiovisual ―</p>
+            <p className="hidden-top__caption">Documentary, Film, Editorial</p>
           </div>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Narrativas visuais e textuais que conectam marca e público, transformando valores culturais em conteúdo relevante e autêntico.
+              Produtos para a rede pública de Salvador alcançando alunos, professores e gestores. Oficinas de vídeo e HQ com estudantes no Prêmio Jorge Amado. Mentoria e evangelização de cultura de design em startups early-stage e times de produto.
             </p>
-            <p className="hidden-top__label">Culture ―</p>
-            <p className="hidden-top__caption">Storytelling, Content, Narrative</p>
+            <p className="hidden-top__label">Educação ―</p>
+            <p className="hidden-top__caption">Public Education, Workshop, Mentoring</p>
           </div>
         </div>
       </div>
@@ -128,7 +177,7 @@ export default function Home() {
           <div className="page-columns__col page-columns__col--2">
             <div className="hero__links">
               <div className="hero__links-group">
-                <a className="hero__links-link" href="mailto:seu@email.com">Email ↗</a>
+                <a className="hero__links-link" href="mailto:ramonanjos@me.com">Email ↗</a>
               </div>
               <div className="hero__links-group">
                 <a className="hero__links-link" href="https://savee.it/ramonanjos/" target="_blank" rel="noopener noreferrer">Savee</a>
@@ -138,8 +187,8 @@ export default function Home() {
               </div>
               <div className="hero__links-group">
                 <p className="hero__links-label">Let&apos;s talk?</p>
-                <a className="hero__links-link" href="#">30&apos; Office Hours</a>
-                <a className="hero__links-link" href="#">Bookmarks</a>
+                <a className="hero__links-link" href="https://calendly.com/ramonanjos/30talks" target="_blank" rel="noopener noreferrer">30&apos; Office Hours</a>
+                <a className="hero__links-link" href="https://ramonanjos.notion.site/Reading-List-142bf009a31b4a18b57832ba1ef1ab50" target="_blank" rel="noopener noreferrer">Bookmarks</a>
               </div>
             </div>
           </div>
@@ -180,7 +229,7 @@ export default function Home() {
                   <br />
                   Hoje é uma tendência, grandes marcas
                   <br />
-                  espelham seus valores em recortes sociais.
+                  espelham seus valores em recortes socioculturais.
                 </p>
               </div>
               <p className="manifesto-signature">
@@ -204,12 +253,12 @@ export default function Home() {
           </div>
           <div className="opening__post-video-row">
             <div className="opening__post-video-caption">
-              <span className="opening__caption-year">2024 ―</span>
+              <span className="opening__caption-year">2026 ―</span>
               <small className="opening__author-role">Tech &amp; Finance</small>
             </div>
             <p className="opening__statement">
-              Transacionar de forma simples, facilitando a rotina de pequenos empreendedores ― escalando
-              negócios de forma sustentável
+              Transacionar de forma simples, facilitando a rotina de pequenos investidores ― escalando
+              patrimônios de forma sustentável
             </p>
           </div>
         </div>
@@ -227,10 +276,10 @@ export default function Home() {
           <div className="bio-rail__text">
             <span className="opening__intro-marker" aria-hidden="true" />
             <p>Atualmente trabalho como Designer de Produto na{' '}
-            <span className="bio-rail__underline">Fintech Nubank</span>, com o desafio de criar{' '}
+            <a className="bio-rail__underline" href="https://nubank.com.br" target="_blank" rel="noopener noreferrer">Fintech Nubank</a>, com o desafio de criar{' '}
             <strong>
-              a melhor experiência em transações financeiras para +5MM de empreendedores, elevando a
-              capacidade de previsão e gerenciamento de seus negócios.
+              a melhor experiência em transações financeiras para +130MM de pessoas no mundo, elevando a
+              capacidade de previsão e gerenciamento de seus patrimônios.
             </strong>{' '}
             Atuamos impactando o comportamento das cidades, como parte de um novo mundo, onde o
             dinheiro físico deixa de correr e transações financeiras são mínimos detalhes no dia a
@@ -459,7 +508,7 @@ export default function Home() {
           <nav className="awards-press__press" aria-label="Artigos e imprensa">
             <a
               className="awards-press__link"
-              href="https://drive.google.com/file/d/0B5bIZEZdHUmCUkFRNWJ3NFhjajQ/view"
+              href="https://drive.google.com/file/d/0B5bIZEZdHUmCUkFRNWJ3NFhjajQ/preview"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -467,7 +516,7 @@ export default function Home() {
             </a>
             <a
               className="awards-press__link"
-              href="https://drive.google.com/file/d/0B5bIZEZdHUmCZG9nZzk0NWFpSFE/view"
+              href="https://drive.google.com/file/d/0B5bIZEZdHUmCZG9nZzk0NWFpSFE/preview"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -478,7 +527,7 @@ export default function Home() {
             </a>
             <a
               className="awards-press__link"
-              href="https://drive.google.com/file/d/0B5bIZEZdHUmCSWpFWGVOdHFzUk0/view"
+              href="https://drive.google.com/file/d/0B5bIZEZdHUmCSWpFWGVOdHFzUk0/preview"
               target="_blank"
               rel="noopener noreferrer"
             >
