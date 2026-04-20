@@ -34,10 +34,11 @@ export const metadata = {
     siteName: 'Ramon Anjos',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Ramon Anjos — Product and Design Language System',
+        type: 'image/jpeg',
       },
     ],
     locale: 'pt_BR',
@@ -48,7 +49,7 @@ export const metadata = {
     title: 'ramonanjos',
     description:
       'Ramon Anjos — Product and Design Language System. 15+ years of experience on UX and craft.',
-    images: ['/og-image.png'],
+    images: ['/og-image.jpg'],
   },
   other: {
     'Ramon Anjos': 'Graphic Design, Design, Product, Communication, UI, UX, Digital',
