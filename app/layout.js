@@ -87,6 +87,13 @@ export default function RootLayout({ children }) {
         />
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="dns-prefetch" href="https://player.vimeo.com" />
+        <link
+          rel="preload"
+          href="/fonts/ABCArizonaText-Thin-Trial.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         {children}

@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import Image from 'next/image';
 import { register, setVisible } from './sliderScheduler';
 
 const TRANSITION_MS = 2000;
+const IMAGE_SIZES = '(max-width: 600px) 100vw, (max-width: 960px) 50vw, 50vw';
 
 export default function MosaicSlider({ images, alt }) {
   const [current, setCurrent] = useState(0);
@@ -41,11 +43,12 @@ export default function MosaicSlider({ images, alt }) {
 
   if (count === 1) {
     return (
-      <img
+      <Image
         src={images[0]}
         alt={alt}
-        loading="lazy"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        fill
+        sizes={IMAGE_SIZES}
+        style={{ objectFit: 'cover' }}
       />
     );
   }
@@ -61,14 +64,20 @@ export default function MosaicSlider({ images, alt }) {
         }}
       >
         {images.map((src, i) => (
-          <img
+          <div
             key={src}
-            src={src}
-            alt={`${alt} ${i + 1}`}
-            loading="lazy"
-            className="mosaic-slider__img"
+            className="mosaic-slider__slide"
             style={{ width: `${100 / count}%` }}
-          />
+          >
+            <Image
+              src={src}
+              alt={`${alt} ${i + 1}`}
+              fill
+              sizes={IMAGE_SIZES}
+              className="mosaic-slider__img"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         ))}
       </div>
     </div>

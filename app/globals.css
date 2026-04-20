@@ -42,7 +42,7 @@ a {
   width: 100%;
 }
 
-/* ── Hidden top (fmemoria mechanic) ── */
+/* ── Hidden top (memory mechanic) ── */
 .hidden-top {
   height: 0;
   overflow: hidden;
@@ -563,10 +563,14 @@ a {
   transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mosaic-slider__img {
+.mosaic-slider__slide {
+  position: relative;
   height: 100%;
-  object-fit: cover;
   flex-shrink: 0;
+}
+
+.mosaic-slider__img {
+  object-fit: cover;
 }
 
 /* ══════════════════════════════════════
@@ -623,6 +627,11 @@ a {
   text-decoration: underline;
   text-underline-offset: 0.12em;
   text-decoration-thickness: 1px;
+  transition: color 0.25s ease;
+}
+
+.bio-rail__underline:hover {
+  color: #f3c346;
 }
 
 /* ── Footer ── */
