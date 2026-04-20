@@ -247,7 +247,7 @@ a {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: clamp(12px, 1.8vw, 28px);
   align-items: start;
-  margin-top: 180px;
+  margin-top: 210px;
   min-width: 0;
 }
 
@@ -428,7 +428,7 @@ a {
   letter-spacing: -0.02em;
   color: #434d4a;
   margin: 0;
-  margin-bottom: 180px;
+  margin-bottom: 210px;
 }
 
 .opening__intro {
@@ -574,7 +574,7 @@ a {
    ══════════════════════════════════════ */
 .bio-rail {
   background: #fbf8f3;
-  padding: 180px 30px 180px;
+  padding: 210px 30px 210px;
 }
 
 .bio-rail__grid {
