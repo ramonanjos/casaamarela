@@ -6,6 +6,11 @@ Edite os textos abaixo. Quando terminar, me peça para aplicar as alterações.
 
 ## 1. Hidden Top (cards de competência)
 
+### 1.0 Heading da seção
+
+- **Título (primário):** Beyond
+- **Título (secundário):** the Core
+
 ### 1.1 Semiótica
 
 - **Label:** Semiótica ―

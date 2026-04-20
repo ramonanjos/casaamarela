@@ -103,6 +103,10 @@ export default function Home() {
       {/* ── Hidden top (scroll up to find) ── */}
       <div className="hidden-top" ref={hiddenTopRef}>
         <div className="hidden-top__grid" ref={hiddenGridRef}>
+          <p className="opening__author hidden-top__heading">
+            Beyond
+            <small className="opening__author-role">the Core</small>
+          </p>
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
