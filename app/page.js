@@ -110,7 +110,7 @@ export default function Home() {
           <div className="hidden-top__block">
             <span className="hidden-top__marker" aria-hidden="true" />
             <p className="hidden-top__body">
-              Pós-graduação em Tecnologia e Estética pela PUC-SP e grupo de pesquisa em Filosofia e Design na USP — uma base teórica que traduz leitura de signos, cultura de massa e comportamento em decisões de produto com rigor e profundidade.
+              Pós-graduação em Tecnologia e Semiótica pela PUC-SP e grupo de pesquisa em Filosofia e Design na USP — uma base teórica que traduz leitura de signos, cultura de massa e comportamento em decisões de produto com rigor e profundidade.
             </p>
             <p className="hidden-top__label">Semiótica ―</p>
             <p className="hidden-top__caption">Signs, Meaning, Behavior</p>

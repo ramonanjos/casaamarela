@@ -14,7 +14,7 @@ Edite os textos abaixo. Quando terminar, me peça para aplicar as alterações.
 ### 1.1 Semiótica
 
 - **Label:** Semiótica ―
-- **Texto:** Pós-graduação em Tecnologia e Estética pela PUC-SP e grupo de pesquisa em Filosofia e Design na USP — uma base teórica que traduz leitura de signos, cultura de massa e comportamento em decisões de produto com rigor e profundidade.
+- **Texto:** Pós-graduação em Tecnologia e Semiótica pela PUC-SP e grupo de pesquisa em Filosofia e Design na USP — uma base teórica que traduz leitura de signos, cultura de massa e comportamento em decisões de produto com rigor e profundidade.
 - **Caption:** Signs, Meaning, Behavior
 
 ### 1.2 Fintech Scale
