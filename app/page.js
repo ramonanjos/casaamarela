@@ -257,7 +257,7 @@ export default function Home() {
           </div>
           <div className="opening__post-video-row">
             <div className="opening__post-video-caption">
-              <span className="opening__caption-year">2026 ―</span>
+              <span className="opening__caption-year">2022 ―</span>
               <small className="opening__author-role">Tech &amp; Finance</small>
             </div>
             <p className="opening__statement">
@@ -549,7 +549,7 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer className="footer reveal">
         <p className="footer__copy">
-          &copy; 2026 Ramon Anjos
+          &copy; 2022 Ramon Anjos
           <small>&mdash; Product, Design Language System</small>
         </p>
       </footer>

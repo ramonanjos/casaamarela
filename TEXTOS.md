@@ -69,7 +69,7 @@ Edite os textos abaixo. Quando terminar, me peça para aplicar as alterações.
 - **Manifesto:** Acredito em marcas e produtos que estabelecem vínculos entre necessidades e comportamentos humanos, entregando uma experiência que reforce valores culturais. Hoje é uma tendência, grandes marcas espelham seus valores em recortes socioculturais.
 - **Assinatura label:** Design ―
 - **Assinatura sub:** Identity, Experience, Culture
-- **Caption vídeo:** 2026 ―
+- **Caption vídeo:** 2022 ―
 - **Caption role:** Tech & Finance
 - **Statement pós-vídeo:** Transacionar de forma simples, facilitando a rotina de pequenos investidores ― escalando patrimônios de forma sustentável
 
@@ -141,4 +141,4 @@ Comecei a desenhar quando tinha ~12 anos, isso explica porque não fui um skatis
 
 ## 7. Footer
 
-© 2026 Ramon Anjos — Product, Design Language System
+© 2022 Ramon Anjos — Product, Design Language System
