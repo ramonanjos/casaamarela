@@ -191,13 +191,28 @@ Auditoria completa de todos os ficheiros do projeto. Build 100% limpo, zero warn
 ### 15. Assets de metadata (OG, favicon)
 
 - **`public/og-image.png`** — imagem Open Graph 1200×630 para partilha em redes sociais.
-- **`app/icon.png`** — favicon da app (Next.js detecta automaticamente `icon.png` no `app/`).
+- **`app/icon.png`** — favicon da app (Next.js detecta automaticamente `icon.png` no `app/`). *[Substituído por `app/icon.svg` em 22 abr 2026 — ver secção 18.]*
 - **`public/favicon.png`** — favicon alternativo no public.
 
 ### 16. Ficheiro de textos editáveis (`TEXTOS.md`)
 
 - Criado **`TEXTOS.md`** com todos os textos da página organizados por secção (Hidden Top, Opening, Bio, Citação, Awards, Press, Footer) — permite edição de conteúdo sem mexer no código.
 - Estrutura de label/texto/caption para cada card da hidden-top, tabela de awards, e texto corrido das restantes secções.
+
+### 17. Sync de textos e ano (21 abr 2026)
+
+- **Ano padronizado em 2022** no site e em `TEXTOS.md` (caption pós-vídeo da Opening e footer `©`). Opção do autor — ano da gravação do vídeo/autoria da arte, não o ano corrente. Commit `e938718`.
+- **Auditoria `TEXTOS.md` × `app/page.js`:** conferência bloco a bloco (Hidden Top 1.0–1.8, Opening, Bio, Citação, Awards, Press, Footer). Única divergência encontrada: bloco 1.1 dizia "Tecnologia e **Estética** pela PUC-SP" no site, mas `TEXTOS.md` fixava "Tecnologia e **Semiótica**". Corrigido no site. Commit `452b840`.
+- **Deploys em produção:** `dpl_47RCJJnK…` (ano) e `dpl_6rguazuT…` (Semiótica), ambos aliased para `https://www.ramonanjos.com`.
+- **Fluxo reforçado:** `TEXTOS.md` é a fonte da verdade de conteúdo; qualquer edição de copy deve passar primeiro pelo ficheiro e depois ser aplicada ao `app/page.js` via diff direcionado.
+
+### 18. Favicon vetorial (22 abr 2026)
+
+- **Problema:** `app/icon.png` (128×128 bitmap com stroke escuro fino) aparecia **embaçado** no separador e com uma **borda preta mínima** ao redor do círculo — o antialiasing do stroke, quando reduzido a 16/32 px pelo browser, virava uma halo cinza/preto.
+- **Solução:** criado **`app/icon.svg`** — círculo sólido `#ffc72c` (amarelo da marca, o mesmo de `globals.css`), **sem stroke**, `viewBox="0 0 32 32"`. Vector = nítido em qualquer tamanho/DPI (Retina inclusive).
+- **Regenerado `app/apple-icon.png` 180×180** a partir do mesmo SVG via `sharp` (iOS ainda não suporta SVG para touch icon).
+- **Removidos** `app/icon.png` e `app/favicon.ico` antigos — o Next.js App Router detecta automaticamente `app/icon.svg` e `app/apple-icon.png` e emite as `<link rel="icon">` corretas; nenhum ajuste em `layout.js` foi necessário.
+- **Aprendizado:** favicons com stroke fino sofrem sempre em tamanhos pequenos; preferir **formas sólidas** e, quando possível, **SVG**. Suporte: Chrome, Edge, Firefox, Safari 14+ — fallback gracioso para `apple-icon.png` em dispositivos antigos.
 
 ---
 
@@ -222,7 +237,8 @@ Auditoria completa de todos os ficheiros do projeto. Build 100% limpo, zero warn
 | `app/globals.css` | Estilos globais, `@font-face` Arizona Text, reset, responsivo |
 | `app/components/MosaicSlider.js` | Carrossel horizontal de imagens por item do mosaico |
 | `app/components/sliderScheduler.js` | Scheduler global para coordenar transições dos sliders |
-| `app/icon.png` | Favicon da app (detectado pelo Next.js) |
+| `app/icon.svg` | Favicon vetorial da app (detectado pelo Next.js) |
+| `app/apple-icon.png` | Touch icon 180×180 para iOS (não suporta SVG) |
 | `public/og-image.png` | Imagem Open Graph para partilha social |
 | `TEXTOS.md` | Todos os textos da página, editáveis sem mexer no código |
 | `app/error.js` / `app/global-error.js` | Erros UI |
@@ -250,4 +266,4 @@ Houve contexto em que o **repositório Git estava na pasta home** (`~`), o que m
 
 ---
 
-*Última atualização do log: 19 abr 2026 — tipografia next/font, mosaic slider, assets OG/favicon, ficheiro TEXTOS.md.*
+*Última atualização do log: 22 abr 2026 — favicon migrado para SVG vetorial (`app/icon.svg`), apple-icon regenerado sem stroke, PNG/ICO antigos removidos.*
