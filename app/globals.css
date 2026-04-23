@@ -237,6 +237,7 @@ a {
   width: 100%;
   height: 100%;
   border: 0;
+  filter: contrast(1.08) saturate(1.12) brightness(1.02) url(#sharpen);
 }
 
 /* Linha sob o vídeo: mesma grelha 4 colunas + baseline da 1.ª linha “2024 ―” com “Transacionar…” */

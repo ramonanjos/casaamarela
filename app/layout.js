@@ -96,6 +96,21 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+        >
+          <defs>
+            <filter id="sharpen" x="0" y="0" width="100%" height="100%">
+              <feConvolveMatrix
+                order="3"
+                preserveAlpha="true"
+                kernelMatrix="0 -0.3 0 -0.3 2.2 -0.3 0 -0.3 0"
+              />
+            </filter>
+          </defs>
+        </svg>
         {children}
         <Analytics />
       </body>

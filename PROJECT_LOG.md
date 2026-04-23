@@ -214,6 +214,24 @@ Auditoria completa de todos os ficheiros do projeto. Build 100% limpo, zero warn
 - **Removidos** `app/icon.png` e `app/favicon.ico` antigos — o Next.js App Router detecta automaticamente `app/icon.svg` e `app/apple-icon.png` e emite as `<link rel="icon">` corretas; nenhum ajuste em `layout.js` foi necessário.
 - **Aprendizado:** favicons com stroke fino sofrem sempre em tamanhos pequenos; preferir **formas sólidas** e, quando possível, **SVG**. Suporte: Chrome, Edge, Firefox, Safari 14+ — fallback gracioso para `apple-icon.png` em dispositivos antigos.
 
+### 19. Realce visual do vídeo da Opening (22 abr 2026)
+
+- **Queixa:** vídeo do Vimeo embed na secção `.opening__bridge-video` (iframe do player 520934343) parecia "lavado", com pouco contraste e cor pálida. Não há controlo sobre o asset original — Vimeo serve via player próprio.
+- **Solução 1 — ajustes de cor via filtros CSS nativos** em `.opening__bridge-video iframe`:
+  - `contrast(1.08)` — +8% no contraste, dá mais corpo a pretos/brancos.
+  - `saturate(1.12)` — +12% na saturação, reduz o aspecto pastel.
+  - `brightness(1.02)` — +2% de brilho para compensar o leve escurecimento do contraste.
+- **Solução 2 — sharpen via filtro SVG** (`feConvolveMatrix`): CSS não tem `sharpen()` nativo, então foi definido um filtro SVG inline no `<body>` do `layout.js` (SVG zero-size, invisível, carregado uma vez) e referenciado no CSS via `filter: … url(#sharpen)`.
+  - Kernel 3×3 conservador — `0 -0.3 0 / -0.3 2.2 -0.3 / 0 -0.3 0` — soma = `2.2 - 4×0.3 = 1.0` (preserva brilho médio).
+  - `preserveAlpha="true"` evita artefatos no canal alpha.
+  - Ordem na cadeia: cor primeiro, sharpen por último (mais natural).
+- **Aprendizado:**
+  - Filtros CSS nativos (`contrast`, `saturate`, `brightness`) são baratos — shaders simples em GPU, custo desprezível por frame.
+  - `feConvolveMatrix` é mais caro (9 amostragens por pixel por frame), mas aceitável numa área pequena (1 vídeo, ~25% da largura em desktop).
+  - Filtro CSS em iframe cross-origin funciona em todos os browsers modernos — é operação do compositor, não do DOM.
+  - Cuidados com sharpen em excesso: **halos** em bordas de alto contraste e **ruído realçado** em áreas lisas. O kernel escolhido é moderado e não mostra nenhum dos dois.
+- **Optimizações possíveis (não aplicadas, custo vs. benefício não justifica agora):** desligar sharpen em `@media (max-width: 768px)`, honrar `prefers-reduced-data` / `prefers-reduced-motion`, ou pausar o filtro via `IntersectionObserver` quando o vídeo sai do viewport.
+
 ---
 
 ## Acertos
@@ -266,4 +284,4 @@ Houve contexto em que o **repositório Git estava na pasta home** (`~`), o que m
 
 ---
 
-*Última atualização do log: 22 abr 2026 — favicon migrado para SVG vetorial (`app/icon.svg`), apple-icon regenerado sem stroke, PNG/ICO antigos removidos.*
+*Última atualização do log: 22 abr 2026 — realce visual do vídeo da Opening via filtros CSS nativos (contrast/saturate/brightness) + sharpen com `feConvolveMatrix` SVG.*
