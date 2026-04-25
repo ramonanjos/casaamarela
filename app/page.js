@@ -314,7 +314,7 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--landscape">
           <MosaicSlider
-            images={['/imgs/AW/AW01.jpg', '/imgs/AW/AW03.jpg', '/imgs/AW/AW04.jpg', '/imgs/AW/AW07.jpg']}
+            images={['/imgs/AW/AW01.jpg', '/imgs/AW/AW02.jpg', '/imgs/AW/AW03.jpg', '/imgs/AW/AW07.jpg']}
             alt="AW"
           />
           <div className="mosaic__overlay">AW</div>
@@ -327,7 +327,7 @@ export default function Home() {
       <div className="mosaic mosaic--4-bottom reveal">
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/CG/CG01.jpg', '/imgs/CG/CG02.jpg']}
+            images={['/imgs/CG/CG00.jpg', '/imgs/CG/CG01.jpg', '/imgs/CG/CG02.jpg', '/imgs/CG/CG03.jpg', '/imgs/CG/CG04.jpg']}
             alt="CG"
           />
           <div className="mosaic__overlay">CG</div>
@@ -341,14 +341,14 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/HR/HR07.jpg', '/imgs/HR/HR10.jpg']}
+            images={['/imgs/HR/HR00.jpg', '/imgs/HR/HR01.jpg', '/imgs/HR/HR03.jpg']}
             alt="HR"
           />
           <div className="mosaic__overlay">HR</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/NW/NW03.jpg', '/imgs/NW/NW05.jpg']}
+            images={['/imgs/NW/NW01.jpg', '/imgs/NW/NW02.jpg', '/imgs/NW/NW04.jpg', '/imgs/NW/NW05.jpg']}
             alt="NW"
           />
           <div className="mosaic__overlay">NW</div>
@@ -375,10 +375,30 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--tall">
           <MosaicSlider
-            images={['/imgs/RC/RC01.jpg', '/imgs/RC/RCE05.jpg']}
-            alt="RC"
+            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg', '/imgs/SC/SC04.jpg', '/imgs/SC/SC05.jpg', '/imgs/SC/SC06.jpg']}
+            alt="SC"
           />
-          <div className="mosaic__overlay">RC</div>
+          <div className="mosaic__overlay">SC</div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════
+          Mosaic Row 3b: 2 large items (AMB + ML) — penúltima
+          ══════════════════════════════════════ */}
+      <div className="mosaic mosaic--2-top reveal">
+        <div className="mosaic__item mosaic__item--landscape">
+          <MosaicSlider
+            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
+            alt="SM"
+          />
+          <div className="mosaic__overlay">SM</div>
+        </div>
+        <div className="mosaic__item mosaic__item--landscape">
+          <MosaicSlider
+            images={['/imgs/ML/ML01.jpg', '/imgs/ML/ML02.jpg', '/imgs/ML/ML03.jpg', '/imgs/ML/ML04.jpg', '/imgs/ML/ML05.jpg']}
+            alt="ML"
+          />
+          <div className="mosaic__overlay">ML</div>
         </div>
       </div>
 
@@ -388,10 +408,10 @@ export default function Home() {
       <div className="mosaic mosaic--4-bottom reveal">
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SC/SC01.jpg', '/imgs/SC/SC02.jpg', '/imgs/SC/SC03.jpg']}
-            alt="SC"
+            images={['/imgs/RC/RC00.jpg', '/imgs/RC/RC01.jpg']}
+            alt="RC"
           />
-          <div className="mosaic__overlay">SC</div>
+          <div className="mosaic__overlay">RC</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
@@ -402,10 +422,10 @@ export default function Home() {
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
-            images={['/imgs/SM/SM02.jpg', '/imgs/SM/SM05.jpg']}
-            alt="SM"
+            images={['/imgs/AMB/AMB01.jpg', '/imgs/AMB/AMB02.jpg', '/imgs/AMB/AMB03.jpg']}
+            alt="AMB"
           />
-          <div className="mosaic__overlay">SM</div>
+          <div className="mosaic__overlay">AMB</div>
         </div>
         <div className="mosaic__item mosaic__item--square">
           <MosaicSlider
