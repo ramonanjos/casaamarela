@@ -454,6 +454,14 @@ a {
   flex-shrink: 0;
 }
 
+/* Mesmo respiro vertical do marcador, sem a linha visível */
+.opening__intro-marker--no-line {
+  height: 0;
+  width: 0;
+  background: none;
+  margin-bottom: calc(1rem + 1px);
+}
+
 /* Equivale ao <h2> do manifesto no html-page */
 .opening__intro-body {
   font-family: var(--font-karla), -apple-system, BlinkMacSystemFont, sans-serif;

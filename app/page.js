@@ -290,7 +290,10 @@ export default function Home() {
             dia.</p>
           </div>
           <div className="bio-rail__text">
-            <span className="opening__intro-marker" aria-hidden="true" />
+            <span
+              className="opening__intro-marker opening__intro-marker--no-line"
+              aria-hidden="true"
+            />
             <p>Centrado em como a complexidade da tecnologia simplifica a vida das pessoas, atuo na
             construção de <strong>produtos nativamente digitais</strong> com fortes pilares de
             cultura e <strong>experiência de marca</strong>. Trabalhei com Startups e{' '}
