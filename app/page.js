@@ -202,7 +202,7 @@ export default function Home() {
       </div>
 
       {/* ══════════════════════════════════════
-          Opening: col 1 = nome | cols 2–4 = título + texto + vídeo (margem direita)
+          Opening: col 1 = nome | cols 2–4 = título + texto + vídeo (grelha, sem sangrar)
           ══════════════════════════════════════ */}
       <div className="opening">
         <div className="page-columns page-columns--opening">

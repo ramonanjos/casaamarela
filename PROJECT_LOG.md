@@ -232,6 +232,12 @@ Auditoria completa de todos os ficheiros do projeto. Build 100% limpo, zero warn
   - Cuidados com sharpen em excesso: **halos** em bordas de alto contraste e **ruído realçado** em áreas lisas. O kernel escolhido é moderado e não mostra nenhum dos dois.
 - **Optimizações possíveis (não aplicadas, custo vs. benefício não justifica agora):** desligar sharpen em `@media (max-width: 768px)`, honrar `prefers-reduced-data` / `prefers-reduced-motion`, ou pausar o filtro via `IntersectionObserver` quando o vídeo sai do viewport.
 
+### 20. Layout do vídeo e mosaico — grelha, margens e cantos (Mai 2026)
+
+- **Vídeo da Opening (`.opening__bridge`):** removido o sangramento (`width: calc(100% + …)` e margens negativas em breakpoints). O bloco do iframe passa a **respeitar as colunas da grelha** e o mesmo padding lateral que o resto da página (`page-columns`), com margem simétrica à direita.
+- **Mosaico (`.mosaic`):** aplicado **padding horizontal** alinhado ao grid — **30px** desktop/tablet, **20px** em `max-width: 600px` — para o bloco de imagens não encostar às bordas do viewport.
+- **Cantos arredondados:** **`border-radius: 24px`** em `.opening__bridge-video` e `.mosaic__item` (com `overflow: hidden`, recorta iframe e imagens dos sliders). Versão anterior testada só em desenvolvimento via classe em `layout.js`; estado final incorporado no CSS base em produção.
+
 ---
 
 ## Acertos
@@ -284,4 +290,4 @@ Houve contexto em que o **repositório Git estava na pasta home** (`~`), o que m
 
 ---
 
-*Última atualização do log: 22 abr 2026 — realce visual do vídeo da Opening via filtros CSS nativos (contrast/saturate/brightness) + sharpen com `feConvolveMatrix` SVG.*
+*Última atualização do log: 05 mai 2026 — vídeo e mosaico na grelha (sem sangrar), margens laterais do mosaico, cantos 24px no frame do vídeo e nas células do mosaico.*

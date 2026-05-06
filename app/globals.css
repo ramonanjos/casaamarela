@@ -185,7 +185,7 @@ a {
 }
 
 /* ══════════════════════════════════════
-   Opening: col 1 = nome | cols 2–5 = título (light) + texto + vídeo (3 col, cantos arredondados, sem padding à direita)
+   Opening: col 1 = nome | cols 2–5 = título (light) + texto + vídeo (cols 2–4, alinhado à grelha / margens iguais)
    ══════════════════════════════════════ */
 .opening {
   background: #fbf8f3;
@@ -218,7 +218,9 @@ a {
 .opening__bridge {
   grid-column: 2 / -1;
   grid-row: 2;
-  width: calc(100% + 30px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-top: 120px;
 }
 
@@ -227,7 +229,7 @@ a {
   aspect-ratio: 1 / 1;
   position: relative;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 24px;
   background: #2a2a2a;
 }
 
@@ -512,6 +514,8 @@ a {
   gap: 20px;
   width: 100%;
   margin-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .mosaic:first-of-type {
@@ -542,6 +546,7 @@ a {
   overflow: hidden;
   background: #eee;
   contain: layout style paint;
+  border-radius: 24px;
 }
 
 .mosaic__overlay {
@@ -741,8 +746,9 @@ a {
   .opening__bridge {
     grid-column: 1 / -1;
     grid-row: 3;
-    width: calc(100% + 60px);
-    margin-left: -30px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin-top: 0;
   }
 
@@ -857,8 +863,9 @@ a {
 
   .opening__bridge {
     grid-column: 1;
-    margin-left: -20px;
-    width: calc(100% + 40px);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .opening__post-video-row {
@@ -917,6 +924,11 @@ a {
   .mosaic--4-bottom,
   .mosaic--3-col {
     grid-template-columns: 1fr;
+  }
+
+  .mosaic {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
 }
