@@ -1,6 +1,8 @@
 import { Karla } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
+import SeoJsonLd from './components/SeoJsonLd.js';
+import { siteUrl, siteDescription, siteTagline } from '../lib/site.js';
 
 const karla = Karla({
   subsets: ['latin'],
@@ -9,64 +11,84 @@ const karla = Karla({
   variable: '--font-karla',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ramonanjos.com';
-
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'ramonanjos',
-  description:
-    'Ramon Anjos — Product and Design Language System. 15+ years of experience on UX and craft.',
+  title: {
+    default: siteTagline,
+    template: '%s | Ramon Anjos',
+  },
+  description: siteDescription,
   keywords: [
-    'Graphic Design',
-    'Design',
-    'Product',
-    'Communication',
-    'UI',
+    'Ramon Anjos',
+    'design de produto',
     'UX',
+    'UI',
+    'design system',
+    'language system',
+    'Graphic Design',
+    'Nubank',
+    'product design',
     'Digital',
+    'Brasil',
   ],
-  authors: [{ name: 'Ramon Anjos' }],
+  authors: [{ name: 'Ramon Anjos', url: siteUrl }],
+  creator: 'Ramon Anjos',
+  publisher: 'Ramon Anjos',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'ramonanjos',
-    description:
-      'Ramon Anjos — Product and Design Language System. 15+ years of experience on UX and craft.',
+    title: siteTagline,
+    description: siteDescription,
     url: siteUrl,
     siteName: 'Ramon Anjos',
+    locale: 'pt_BR',
+    type: 'website',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Ramon Anjos — Product and Design Language System',
+        alt: 'Ramon Anjos — product, UX & design language system',
         type: 'image/jpeg',
       },
       {
         url: '/og-image-square.jpg',
         width: 1080,
         height: 1080,
-        alt: 'Ramon Anjos — Product and Design Language System',
+        alt: 'Ramon Anjos — product, UX & design language system',
         type: 'image/jpeg',
       },
       {
         url: '/og-image-story.jpg',
         width: 1080,
         height: 1920,
-        alt: 'Ramon Anjos — Product and Design Language System',
+        alt: 'Ramon Anjos — product, UX & design language system',
         type: 'image/jpeg',
       },
     ],
-    locale: 'pt_BR',
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ramonanjos',
-    description:
-      'Ramon Anjos — Product and Design Language System. 15+ years of experience on UX and craft.',
+    title: siteTagline,
+    description: siteDescription,
     images: ['/og-image.jpg'],
-  },
-  other: {
-    'Ramon Anjos': 'Graphic Design, Design, Product, Communication, UI, UX, Digital',
   },
 };
 
@@ -96,6 +118,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <SeoJsonLd />
         <svg
           aria-hidden="true"
           focusable="false"
